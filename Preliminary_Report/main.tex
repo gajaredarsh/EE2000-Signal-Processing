@@ -1,0 +1,37 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\usepackage[review]{cvpr}      % To produce the REVIEW version
+%\usepackage[rebuttal]{cvpr}    % To produce a REBUTTAL
+%\usepackage{cvpr}              % To produce the CAMERA-READY version
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+
+
+\usepackage[pagebackref,breaklinks,colorlinks]{hyperref}
+
+
+\def\cvprPaperID{*****} % *** Enter the CVPR Paper ID here
+\def\confName{CVPR}
+\def\confYear{2023}
+
+\begin{document}
+\title{Real-Time FPGA Implementation of a QPSK Modulator and Demodulator with Simulated Channel}
+\author{Darsh Gajare, Parth Achat, Nishid Khandagre \and Aditya Mali}
+\maketitle
+
+
+\begin{abstract}
+	Quadrature Phase Shift Keying (QPSK) is a digital modulation technique which transmits two bits per symbol without additional bandwidth. This project implements a complete, real-time QPSK transmitter and receiver entirely on a Spartan-7 FPGA (Boolean Board, XC7S50). The system performs bit-to-symbol mapping, carrier generation, quadrature mixing, and matched low-pass filtering, and includes a simulated AWGN channel with live-adjustable noise level for testing. System performance is validated through bit-error-rate (BER) measurement and live constellation visualization streamed over UART. This report defines the problem statement, reviews relevant literature on QPSK theory and existing FPGA-based QPSK implementations, and outlines the architecture and verification plan for the mid-term and final phases. Carrier recovery via a Costas loop, symbol timing recovery via the Gardner algorithm, and a coded-versus-uncoded BER comparison are being considered as optional extensions if time permits.
+
+
+\end{abstract}
+
+\section{Introduction}
+
+%{\small
+%\bibliographystyle{ieee_fullname}
+%\bibliography{egbib}
+%}
+\end{document}
