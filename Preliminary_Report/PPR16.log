@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.9.2)  27 SEP 2026 15:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.9.2)  27 SEP 2026 16:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -352,9 +352,23 @@ File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
 \c@bookmark@seq@number=\count329
 \Hy@SectionHShift=\skip54
 )
+(/usr/share/texlive/texmf-dist/tex/latex/cleveref/cleveref.sty
+Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
+Package cleveref Info: `hyperref' support loaded on input line 2370.
+LaTeX Info: Redefining \cref on input line 2370.
+LaTeX Info: Redefining \Cref on input line 2370.
+LaTeX Info: Redefining \crefrange on input line 2370.
+LaTeX Info: Redefining \Crefrange on input line 2370.
+LaTeX Info: Redefining \cpageref on input line 2370.
+LaTeX Info: Redefining \Cpageref on input line 2370.
+LaTeX Info: Redefining \cpagerefrange on input line 2370.
+LaTeX Info: Redefining \Cpagerefrange on input line 2370.
+LaTeX Info: Redefining \labelcref on input line 2370.
+LaTeX Info: Redefining \labelcpageref on input line 2370.
+)
+==> First Aid for cleveref.sty applied!
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
 9.
-
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -457,48 +471,37 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 f-dist/fonts/enc/dvips/base/8r.enc}
 
 
-]
-
-LaTeX Warning: Citation `7509346' on page 2 undefined on input line 112.
-
-(./PPR16.bbl (./PPR16.brf)
+] (./PPR16.bbl (./PPR16.brf)
 \tf@brf=\write4
 \openout4 = `PPR16.brf'.
 
-) [2] (./PPR16.aux)
+ [2]) [3
+
+] (./PPR16.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `PPR16.out' has not changed.
 (rerunfilecheck)             Checksum: 529090999D310333FC7FE840BDDB6D6B;369.
-
-Package rerunfilecheck Warning: File `PPR16.brf' has changed.
-(rerunfilecheck)                Rerun to get bibliographical references right.
-
-Package rerunfilecheck Info: Checksums for `PPR16.brf':
-(rerunfilecheck)             Before: 155F5FCA21FE1225E8146B7953ACEDE4;228
-(rerunfilecheck)             After:  7B9C503CD76450D4DD7CDA5AEFCF0E6B;206.
+Package rerunfilecheck Info: File `PPR16.brf' has not changed.
+(rerunfilecheck)             Checksum: DDFE168058457AF718629DC9C20A102F;346.
  ) 
 Here is how much of TeX's memory you used:
- 12006 strings out of 467533
- 187264 string characters out of 5422139
- 608832 words of memory out of 5000000
- 40747 multiletter control sequences out of 15000+600000
- 647072 words of font info for 77 fonts, out of 8000000 for 9000
+ 13656 strings out of 467533
+ 225323 string characters out of 5422139
+ 675915 words of memory out of 5000000
+ 42389 multiletter control sequences out of 15000+600000
+ 645446 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,8n,93p,1034b,454s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,8n,93p,1034b,614s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/times/utmri8a.pfb>
-Output written on PPR16.pdf (2 pages, 57995 bytes).
+Output written on PPR16.pdf (3 pages, 60676 bytes).
 PDF statistics:
- 60 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
+ 82 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
+ 15 named destinations out of 1000 (max. 500000)
  25 words of extra memory for PDF output out of 10000 (max. 10000000)
 

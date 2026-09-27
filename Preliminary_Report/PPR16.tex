@@ -8,9 +8,9 @@
 \usepackage{amssymb}
 \usepackage{booktabs}
 
-
 \usepackage[pagebackref,breaklinks,colorlinks]{hyperref}
 
+\usepackage{cleveref}
 
 \def\cvprPaperID{*****} % *** Enter the CVPR Paper ID here
 \def\confName{CVPR}
@@ -82,56 +82,94 @@ characteristics such as resource utilization.
 \section{Literature Review}
 \label{sec:litreview}
 
-The most directly relevant prior work is Popescu \etal
+The theoretical foundation for this project is Proakis and Salehi
+\cite{proakis2002communication}, whose treatment of digital modulation and
+optimum receiver design for additive white Gaussian noise (AWGN)
+channels provides the signal-space and constellation basis for QPSK,
+along with the standard framework for coherent detection and
+error-rate analysis. This underlies the QPSK constellation, matched
+filtering, and BER evaluation used throughout our design, without
+being an FPGA implementation reference itself.
+
+The most directly relevant prior FPGA implementation is Popescu \etal
 \cite{6034354}, who implement a complete QPSK modulator,
-channel, and demodulator rather than a modulator alone. Their design
-uses two Spartan-3E boards, with one board implementing the modulator
-and the other implementing the demodulator. Sine and cosine carriers
-are generated internally from a ROM and combined with the odd and even
-bit sequences to form the QPSK signal. At the receiver, the received
-signal is multiplied by locally regenerated sine and cosine references,
-and the recovered signals are compared with a threshold to reconstruct
-the transmitted bits. This work demonstrates the feasibility of a
-complete FPGA-based QPSK transmit-receive chain and is closely related
-to our proposed system. Our implementation differs in that the
-complete digital processing chain is targeted to a single Spartan-7
-FPGA rather than two separate FPGA boards.
+channel, and demodulator rather than a modulator alone, using two
+Spartan-3E boards with ROM-generated sine/cosine carriers and
+coherent multiply-and-threshold detection at the receiver. This
+establishes that a complete FPGA-based QPSK transmit-receive chain is
+practical on modest hardware, and is the closest architectural match
+to our own single-board system.
 
-Carrier generation is an important hardware block in a digital PSK
-modulator. Al Safi and Bazuin \cite{7777861} present FPGA
-implementations of BPSK and QPSK modulators using accumulator-based
-addressing and lookup-table techniques. For QPSK, the required
-phase-shifted sinusoidal waveforms are generated using accumulators and
-a single lookup table, with the implementation carried out in VHDL.
-This work is directly relevant to our carrier-generation block, where
-a phase-accumulator-driven numerically controlled oscillator (NCO) with
-a lookup table is used to generate the sine and cosine references for
-modulation and demodulation.
+On the modulator side, Al Safi and Bazuin \cite{7777861}
+focus on carrier generation, producing the sine/cosine waveforms
+needed for BPSK/QPSK using a single LUT addressed by a
+reverse-accumulator technique to reduce memory --- directly relevant
+to our own phase-accumulator-driven NCO. Pareek \cite{7509346}
+shows that this I/Q-and-multiplier structure is not the only option,
+comparing it against a digitized-carrier approach that uses a 4:1
+multiplexer to select one of four pre-computed phase-shifted carriers
+directly from the input bit pair. We adopt the conventional I/Q route
+used by the first two papers, for its direct correspondence between
+modulation and demodulation stages.
 
-Not every FPGA QPSK design follows the same I/Q-based structure.
-Pareek \cite{7509346} compares a conventional I/Q approach with a
-digitized-carrier approach. In the proposed digitized approach, the
-input bit pair determines the required phase, and a 4:1 multiplexer
-selects the corresponding phase of the digitized carrier. Both
-architectures are implemented on a Spartan-3E FPGA using Verilog HDL.
-The work therefore demonstrates that QPSK modulation can be implemented
-using different hardware architectures. Our project adopts the
-conventional I/Q and carrier-generation approach rather than the
-multiplexer-based phase-selection approach.
+On the demodulator side, Zhang \etal \cite{inproceedings} present an
+all-digital receiver built from digital down-conversion (NCO, mixer,
+low-pass filter), a four-branch Costas loop for carrier
+synchronization, and a digital-phase-locked-loop bit synchronizer.
+This is useful primarily as a contrast: it shows what a
+synchronization-capable receiver requires, which lets us state plainly
+that our baseline demodulator instead assumes a fixed, known carrier
+phase and symbol timing, deferring carrier/timing recovery to the
+optional-extension scope described in \cref{sec:intro}. Deepika \etal
+\cite{9019948} demonstrate that coherent I/Q multiplication is
+not the only demodulation strategy either, proposing a comparator-based
+QPSK demodulator built with model-based design and implemented on a
+Zynq-7000 (ZED) board, with reported hardware resource utilization.
+This confirms that alternative, lower-complexity demodulator
+architectures exist, though our project uses explicit I/Q
+demodulation with locally generated references, FIR filtering, and
+symbol decision rather than a comparator-based scheme.
 
-Taken together, these works demonstrate FPGA-based QPSK modulation,
-complete modulator-channel-demodulator systems, and different
-approaches to digital carrier generation and hardware architecture.
-The objective of this project is not to introduce a new QPSK algorithm,
-but to integrate established techniques into a self-contained and
-verifiable FPGA-based system. The proposed implementation targets a
-single Spartan-7 XC7S50 FPGA and includes QPSK mapping, NCO-based
-carrier generation, modulation, a simulated AWGN channel, coherent
-demodulation, FIR filtering, symbol decision, and BER measurement.
-Selected I/Q samples will be streamed through UART for constellation
-visualization on a host computer.
+Taken together, the reviewed literature establishes the theoretical
+basis for QPSK and AWGN detection, demonstrates a complete two-board
+FPGA QPSK system, and covers multiple approaches to both carrier
+generation/modulation and demodulation, ranging from ROM/accumulator
+carrier generation to comparator-based and synchronization-capable
+receivers. Our contribution is not a new modulation or demodulation
+algorithm, but the integration of established, conventional
+techniques into one compact, single-FPGA system with a digitally
+simulated, live-adjustable AWGN channel, BER measurement, and
+UART-streamed constellation visualization.
+
 
 \section{Next Steps}
+\label{sec:nextsteps}
+
+Having established the problem statement and reviewed relevant prior
+work, the next phase of this project is to design, implement, and
+verify the core QPSK system described in \cref{sec:intro}. We plan to
+follow a staged verification approach: a software reference model
+will be developed first in a high-level language, followed by a
+fixed-point version of the same algorithm, and finally the FPGA/RTL
+implementation on the Boolean Board. At each stage, the
+implementation's output will be compared against the previous stage
+to isolate errors early, rather than debugging the algorithm and the
+hardware simultaneously.
+
+Concretely, for the mid-term report we aim to have a working
+modulator and a demodulator that assumes a fixed, known carrier phase,
+verified in simulation, along with the simulated AWGN channel with its
+live-adjustable noise level. For the final report, we aim to complete
+the bit-error-rate measurement pipeline and the live constellation
+visualization streamed over UART, and to demonstrate the full system
+on the Boolean Board.
+
+If time permits after this core system is verified and working, we
+will consider the optional extensions introduced in
+\cref{sec:intro}: carrier phase recovery via a Costas loop, symbol
+timing recovery via the Gardner algorithm, and a coded-versus-uncoded
+BER comparison. These remain secondary to completing and validating
+the core system.
 
 {\small
 \bibliographystyle{ieee_fullname}
