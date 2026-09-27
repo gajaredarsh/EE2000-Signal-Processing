@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.9.2)  26 SEP 2026 23:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.9.2)  27 SEP 2026 11:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**PaperForReview.tex
+(./PaperForReview.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -352,9 +352,27 @@ File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
 \c@bookmark@seq@number=\count329
 \Hy@SectionHShift=\skip54
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
-9.
-
+(/usr/share/texlive/texmf-dist/tex/latex/cleveref/cleveref.sty
+Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
+Package cleveref Info: `hyperref' support loaded on input line 2370.
+LaTeX Info: Redefining \cref on input line 2370.
+LaTeX Info: Redefining \Cref on input line 2370.
+LaTeX Info: Redefining \crefrange on input line 2370.
+LaTeX Info: Redefining \Crefrange on input line 2370.
+LaTeX Info: Redefining \cpageref on input line 2370.
+LaTeX Info: Redefining \Cpageref on input line 2370.
+LaTeX Info: Redefining \cpagerefrange on input line 2370.
+LaTeX Info: Redefining \Cpagerefrange on input line 2370.
+LaTeX Info: Redefining \labelcref on input line 2370.
+LaTeX Info: Redefining \labelcpageref on input line 2370.
+Package cleveref Info: always capitalise cross-reference names on input line 78
+30.
+Package cleveref Info: always capitalise cross-reference names on input line 78
+52.
+)
+==> First Aid for cleveref.sty applied!
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 4
+5.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -362,31 +380,31 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count330
 )
-(./main.aux)
-\openout1 = `main.aux'.
+No file PaperForReview.aux.
+\openout1 = `PaperForReview.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
- ABD: EveryShipout initializing macros
+ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2025/01/14 v1.3e Standard LaTeX Color (DPC)
 
@@ -436,66 +454,150 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 19.
-
-(./main.out) (./main.out)
+Package hyperref Info: Link coloring ON on input line 45.
 \@outlinefile=\write3
-\openout3 = `main.out'.
+\openout3 = `PaperForReview.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 66.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 3
-7.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 6
+6.
 
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
-File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texm
 f-dist/fonts/enc/dvips/base/8r.enc}
 
 
+]
 
-] (./main.aux)
+LaTeX Warning: Citation `Authors14' on page 2 undefined on input line 182.
+
+
+LaTeX Warning: Citation `Authors14b' on page 2 undefined on input line 189.
+
+[2]
+
+LaTeX Warning: Citation `Alpher02' on page 3 undefined on input line 258.
+
+
+LaTeX Warning: Citation `Alpher03' on page 3 undefined on input line 259.
+
+
+LaTeX Warning: Citation `Alpher04' on page 3 undefined on input line 259.
+
+
+LaTeX Warning: Citation `Alpher03' on page 3 undefined on input line 261.
+
+
+LaTeX Warning: Citation `Alpher03' on page 3 undefined on input line 261.
+
+
+LaTeX Warning: Reference `fig:short' on page 1 undefined on input line 340.
+
+
+LaTeX Warning: Reference `fig:onecol' on page 1 undefined on input line 340.
+
+[3]
+
+LaTeX Warning: Reference `fig:onecol' on page 1 undefined on input line 372.
+
+
+LaTeX Warning: Reference `tab:example' on page 1 undefined on input line 372.
+
+
+LaTeX Warning: Reference `fig:short-a' on page 1 undefined on input line 373.
+
+
+LaTeX Warning: Reference `fig:onecol' on page 1 undefined on input line 373.
+
+
+LaTeX Warning: Reference `sec:formatting' on page 1 undefined on input line 374
+.
+
+
+LaTeX Warning: Reference `eq:also-important' on page 1 undefined on input line 
+374.
+
+
+LaTeX Warning: Reference `fig:onecol' on page 1 undefined on input line 382.
+
+
+LaTeX Warning: Citation `Authors14' on page 4 undefined on input line 390.
+
+
+LaTeX Warning: Citation `Alpher02' on page 4 undefined on input line 392.
+
+
+LaTeX Warning: Citation `Alpher03' on page 4 undefined on input line 392.
+
+
+LaTeX Warning: Citation `Alpher05' on page 4 undefined on input line 392.
+
+
+LaTeX Warning: Citation `Authors14b' on page 4 undefined on input line 392.
+
+
+LaTeX Warning: Citation `Authors14' on page 4 undefined on input line 392.
+
+[4]
+No file PaperForReview.bbl.
+[5
+
+] (./PaperForReview.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 
 
-Package rerunfilecheck Warning: File `main.out' has changed.
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `PaperForReview.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  6A10E4E5D49CD44103BC92A7C16C6259;116.
+Package rerunfilecheck Info: Checksums for `PaperForReview.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  CB3690DC7D6E1DD83B2B28787A950EA9;2553.
  ) 
 Here is how much of TeX's memory you used:
- 12026 strings out of 467533
- 187512 string characters out of 5422139
- 604653 words of memory out of 5000000
- 40774 multiletter control sequences out of 15000+600000
- 649012 words of font info for 85 fonts, out of 8000000 for 9000
+ 13757 strings out of 467533
+ 227088 string characters out of 5422139
+ 678063 words of memory out of 5000000
+ 42468 multiletter control sequences out of 15000+600000
+ 659030 words of font info for 112 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,9n,93p,1033b,452s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
-/utmri8a.pfb>
-Output written on main.pdf (1 page, 55732 bytes).
+ 90i,9n,93p,422b,677s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courie
+r/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on PaperForReview.pdf (5 pages, 155948 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
- 26 compressed objects within 1 object stream
- 3 named destinations out of 1000 (max. 500000)
+ 124 PDF objects out of 1000 (max. 8388607)
+ 92 compressed objects within 1 object stream
+ 30 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

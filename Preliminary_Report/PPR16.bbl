@@ -1,0 +1,22 @@
+\begin{thebibliography}{1}\itemsep=-1pt
+
+\bibitem{7777861}
+Amean Al~Safi and Bradley Bazuin.
+\newblock Fpga based implementation of bpsk and qpsk modulators using address
+  reverse accumulators.
+\newblock In {\em 2016 IEEE 7th Annual Ubiquitous Computing, Electronics \&
+  Mobile Communication Conference (UEMCON)}, pages 1--6, 2016.
+
+\bibitem{qpsk_nptel}
+{ECE, IIT Kharagpur}.
+\newblock Quaternary phase shift keying (qpsk) modulation.
+\newblock NPTEL, Module 5, Lesson 25.
+\newblock Version 2.
+
+\bibitem{6034354}
+S.O. Popescu, A.S. Gontean, and D. Ianchis.
+\newblock Implementation of a qpsk system on fpga.
+\newblock In {\em 2011 IEEE 9th International Symposium on Intelligent Systems
+  and Informatics}, pages 365--370, 2011.
+
+\end{thebibliography}
