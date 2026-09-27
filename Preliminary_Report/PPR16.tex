@@ -2,7 +2,11 @@
 
 \usepackage[review]{cvpr}      % To produce the REVIEW version
 %\usepackage[rebuttal]{cvpr}    % To produce a REBUTTAL
-%\usepackage{cvpr}              % To produce the CAMERA-READY version
+%\usepackage{cvpr}   % To produce the CAMERA-READY version
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric}
+
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -17,7 +21,7 @@
 \def\confYear{2023}
 
 \begin{document}
-\title{Real-Time FPGA Implementation of a QPSK Modulator and Demodulator with Simulated Channel}
+\title{Real-Time FPGA Implementation of a QPSK Modulator and Demodulator with Simulated AWGN Channel}
 \author{Darsh Gajare, Parth Achat, Nishid Khandagre and Aditya Mali\\
 Electrical Engineering\\
 Indian Institue of Technology Hyderabad}
@@ -70,14 +74,7 @@ filter, and a symbol decision block recovers the original bit stream.
 Each of these stages is implemented as a distinct hardware block on
 the Spartan-7 FPGA (Boolean Board, XC7S50).
 
-To validate this system, we follow a staged verification approach: a
-software reference model is developed first, followed by a
-fixed-point version of the same algorithm, and finally the FPGA/RTL
-implementation itself. At each stage, the implementation's behavior is
-compared against the reference model, and the overall system is
-evaluated using bit-error-rate (BER), constellation diagrams, behavior
-under varying noise conditions, and FPGA implementation
-characteristics such as resource utilization.
+To validate this system, we follow a staged verification approach - software reference model, then fixed-point model, then FPGA/RTL implementation - comparing each stage against the previous one and evaluating the final system via BER, constellation diagrams, and FPGA resource utilization.
 
 \section{Literature Review}
 \label{sec:litreview}
@@ -136,9 +133,8 @@ basis for QPSK and AWGN detection, demonstrates a complete two-board
 FPGA QPSK system, and covers multiple approaches to both carrier
 generation/modulation and demodulation, ranging from ROM/accumulator
 carrier generation to comparator-based and synchronization-capable
-receivers. Our contribution is not a new modulation or demodulation
-algorithm, but the integration of established, conventional
-techniques into one compact, single-FPGA system with a digitally
+receivers. Our goal is the integration of established, conventional
+techniques into one single-FPGA system with a digitally
 simulated, live-adjustable AWGN channel, BER measurement, and
 UART-streamed constellation visualization.
 
@@ -156,7 +152,105 @@ implementation on the Boolean Board. At each stage, the
 implementation's output will be compared against the previous stage
 to isolate errors early, rather than debugging the algorithm and the
 hardware simultaneously.
+\begin{figure}[h]
+  \centering
+\begin{tikzpicture}[
+    block/.style={
+        rectangle,
+        draw,
+        rounded corners,
+        align=center,
+        minimum width=3.2cm,
+        minimum height=0.85cm,
+        font=\small
+    },
+    smallblock/.style={
+        rectangle,
+        draw,
+        rounded corners,
+        align=center,
+        minimum width=2.6cm,
+        minimum height=0.75cm,
+        font=\small
+    },
+    arrow/.style={
+        -{Latex[length=2.5mm]},
+        thick
+    }
+]
 
+% ------------------------------------------------------------
+% Main vertical signal path
+% ------------------------------------------------------------
+
+\node[block] (bits) {Input Bits};
+
+\node[block, below=0.55cm of bits] (mapper)
+    {QPSK Bit Mapper};
+
+\node[block, below=0.55cm of mapper] (nco)
+    {NCO / Carrier Generation\\
+    (Phase Accumulator + LUT)};
+
+\node[block, below=0.55cm of nco] (tx)
+    {QPSK Modulator};
+
+\node[block, below=0.55cm of tx] (awgn)
+    {Simulated AWGN Channel};
+
+\node[block, below=0.55cm of awgn] (rx)
+    {Coherent QPSK Demodulator};
+
+\node[block, below=0.55cm of rx] (fir)
+    {FIR Low-Pass Filter};
+
+\node[block, below=0.55cm of fir] (decision)
+    {Symbol Decision};
+
+\node[block, below=0.55cm of decision] (bitsout)
+    {Recovered Bits};
+
+\node[smallblock, below=0.55cm of bitsout] (ber)
+    {BER Measurement};
+
+% -----------------------------------------------------------
+% Main arrows
+% -----------------------------------------------------------
+
+\draw[arrow] (bits) -- (mapper);
+\draw[arrow] (mapper) -- (nco);
+\draw[arrow] (nco) -- (tx);
+\draw[arrow] (tx) -- (awgn);
+\draw[arrow] (awgn) -- (rx);
+\draw[arrow] (rx) -- (fir);
+\draw[arrow] (fir) -- (decision);
+\draw[arrow] (decision) -- (bitsout);
+\draw[arrow] (bitsout) -- (ber);
+
+% ------------------------------------------------------------
+% UART / constellation branch
+% ------------------------------------------------------------
+
+\node[smallblock, right=1.2cm of rx] (uart)
+    {UART};
+
+\node[smallblock, below=0.55cm of uart] (host)
+    {Host PC\\Python/MATLAB};
+
+\node[smallblock, below=0.55cm of host] (plot)
+    {Constellation\\Visualization};
+
+% Branch arrows without labels
+\draw[arrow] (rx.east) -- (uart.west);
+\draw[arrow] (uart) -- (host);
+\draw[arrow] (host) -- (plot);
+
+% ------------------------------------------------------------
+
+\end{tikzpicture}
+   \caption{QPSK transmitter–channel–receiver block diagram}
+   \label{fig:onecol}
+\end{figure}
 Concretely, for the mid-term report we aim to have a working
 modulator and a demodulator that assumes a fixed, known carrier phase,
 verified in simulation, along with the simulated AWGN channel with its
