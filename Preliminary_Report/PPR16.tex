@@ -120,8 +120,9 @@ This is useful primarily as a contrast: it shows what a
 synchronization-capable receiver requires, which lets us state plainly
 that our baseline demodulator instead assumes a fixed, known carrier
 phase and symbol timing, deferring carrier/timing recovery to the
-optional-extension scope described in \cref{sec:intro}. Deepika \etal
-\cite{9019948} demonstrate that coherent I/Q multiplication is
+optional-extension scope described in \cref{sec:intro}. 
+
+Deepika \etal\cite{9019948} demonstrate that coherent I/Q multiplication is
 not the only demodulation strategy either, proposing a comparator-based
 QPSK demodulator built with model-based design and implemented on a
 Zynq-7000 (ZED) board, with reported hardware resource utilization.
@@ -149,7 +150,7 @@ Having established the problem statement and reviewed relevant prior
 work, the next phase of this project is to design, implement, and
 verify the core QPSK system described in \cref{sec:intro}. We plan to
 follow a staged verification approach: a software reference model
-will be developed first in a high-level language, followed by a
+will be developed first in Python, followed by a
 fixed-point version of the same algorithm, and finally the FPGA/RTL
 implementation on the Boolean Board. At each stage, the
 implementation's output will be compared against the previous stage
