@@ -1,0 +1,7 @@
+samples per symbol : 16
+timing offset      : 12 samples (causal FIR group delay)
+input width        : 12 bits signed
+accumulator width  : 16 bits signed
+symbols exported   : 127
+channel            : lfsr noise, Eb/N0 = 6.0 dB
+errors (edges skipped): 0 / 250
