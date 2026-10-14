@@ -100,8 +100,8 @@ def map_qpsk(bits):
     b0 = pairs[:, 0].astype(float)
     b1 = pairs[:, 1].astype(float)
 
-    I = 2.0 * b0 - 1.0
-    Q = 2.0 * b1 - 1.0
+    I = 1.0 - 2.0 * b0
+    Q = 1.0 - 2.0 * b1
     return I, Q
 
 
