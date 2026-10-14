@@ -29,7 +29,7 @@ This project was developed as part of coursework at the Indian Institute of Tech
 
 The communication system consists of the following stages:
 
-![QPSK System Flowchart](images/qpsk_system_overview.png)
+![QPSK System Flowchart](images/system_overview.png)
 
 ## Project Status
 
