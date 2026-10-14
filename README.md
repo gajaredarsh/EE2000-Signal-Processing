@@ -29,56 +29,7 @@ This project was developed as part of coursework at the Indian Institute of Tech
 
 The communication system consists of the following stages:
 
-```text
- ┌─────────────────┐
- │   TRANSMITTER   │
- └────────┬────────┘
-          ▼
- ┌─────────────────┐
- │  Input Bitstream│
- └────────┬────────┘
-          ▼
- ┌─────────────────┐
- │ QPSK Modulation │
- └────────┬────────┘
-          ▼
- ┌─────────────────┐
- │ Digital Carriers│
- └────────┬────────┘
-          ▼
- ┌─────────────────┐
- │  Channel Model  │
- │ (AWGN/LFSR Noise)│
- └────────┬────────┘
-          ▼
- ┌─────────────────┐
- │    RECEIVER     │
- └────────┬────────┘
-          ▼
- ┌─────────────────┐
- │ I/Q Downconversion│
- └────────┬────────┘
-          ▼
- ┌─────────────────┐
- │  FIR Filtering  │
- └────────┬────────┘
-          ▼
- ┌─────────────────┐
- │Symbol Integration│
- └────────┬────────┘
-          ▼
- ┌─────────────────┐
- │  Bit Decisions  │
- └────────┬────────┘
-          ▼
- ┌─────────────────┐
- │ Recovered Bits  │
- └────────┬────────┘
-          ▼
- ┌─────────────────┐
- │  BER Evaluation │
- └─────────────────┘
-```
+![QPSK System Flowchart](images/qpsk_system_overview.png)
 
 ## Project Status
 
