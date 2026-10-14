@@ -29,53 +29,55 @@ This project was developed as part of coursework at the Indian Institute of Tech
 
 The communication system consists of the following stages:
 
-```mermaid
-flowchart TB
-    subgraph TX["TRANSMITTER"]
-        A["Input Bit Stream"]
-        B["QPSK Modulator"]
-        C["Digital Carrier Generation"]
-        A --> B --> C
-    end
-
-    subgraph CH["CHANNEL"]
-        D["Channel Model"]
-        E["AWGN / LFSR Noise"]
-        D --- E
-    end
-
-    subgraph RX["RECEIVER"]
-        F["I/Q Downconversion"]
-        G["FIR Low-Pass Filters"]
-        H["Symbol Integration"]
-        I["Bit Decisions"]
-        F --> G --> H --> I
-    end
-
-    subgraph EV["EVALUATION"]
-        J["Recovered Bit Stream"]
-        K["BER Analysis"]
-        L["Performance Evaluation"]
-        J --> K --> L
-    end
-
-    C --> D
-    D --> F
-    I --> J
-
-    M["Fixed-Point Processing & Golden-Vector Generation"]
-
-    M -.-> C
-    M -.-> F
-    M -.-> G
-    M -.-> I
-
-    classDef completed fill:#dcefe2,stroke:#39845b,color:#173d28,stroke-width:1.5px
-    classDef planned fill:#fff0d5,stroke:#c58b32,color:#66400c,stroke-width:1.5px
-    classDef evaluation fill:#dce9fa,stroke:#4778b8,color:#193b65,stroke-width:1.5px
-
-    class A,B,C,D,E,F,G,H,I,J,K,L completed
-    class M planned
+```text
+ ┌─────────────────┐
+ │   TRANSMITTER   │
+ └────────┬────────┘
+          ▼
+ ┌─────────────────┐
+ │  Input Bitstream│
+ └────────┬────────┘
+          ▼
+ ┌─────────────────┐
+ │ QPSK Modulation │
+ └────────┬────────┘
+          ▼
+ ┌─────────────────┐
+ │ Digital Carriers│
+ └────────┬────────┘
+          ▼
+ ┌─────────────────┐
+ │  Channel Model  │
+ │ (AWGN/LFSR Noise)│
+ └────────┬────────┘
+          ▼
+ ┌─────────────────┐
+ │    RECEIVER     │
+ └────────┬────────┘
+          ▼
+ ┌─────────────────┐
+ │ I/Q Downconversion│
+ └────────┬────────┘
+          ▼
+ ┌─────────────────┐
+ │  FIR Filtering  │
+ └────────┬────────┘
+          ▼
+ ┌─────────────────┐
+ │Symbol Integration│
+ └────────┬────────┘
+          ▼
+ ┌─────────────────┐
+ │  Bit Decisions  │
+ └────────┬────────┘
+          ▼
+ ┌─────────────────┐
+ │ Recovered Bits  │
+ └────────┬────────┘
+          ▼
+ ┌─────────────────┐
+ │  BER Evaluation │
+ └─────────────────┘
 ```
 
 ## Project Status
