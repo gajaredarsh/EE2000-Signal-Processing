@@ -100,15 +100,15 @@ def map_qpsk(bits):
     b0 = pairs[:, 0].astype(float)
     b1 = pairs[:, 1].astype(float)
 
-    I = 1.0 - 2.0 * b0
-    Q = 1.0 - 2.0 * b1
+    I = 2.0 * b0 - 1.0
+    Q = 2.0 * b1 - 1.0
     return I, Q
 
 
 def demap_qpsk_reference(I, Q):
     """Reference inverse of map_qpsk, for Part A's own self-checks only."""
-    b0 = (I < 0).astype(np.uint8)
-    b1 = (Q < 0).astype(np.uint8)
+    I = np.ones_like(b0)
+    Q = np.ones_like(b1)
     bits = np.empty(2 * len(I), dtype=np.uint8)
     bits[0::2] = b0
     bits[1::2] = b1
