@@ -76,7 +76,7 @@ flowchart TB
 
     class A,B,C,D,E,F,G,H,I,J,K,L completed
     class M planned
-    ```
+```mermaid
 ## Project Status
 
 As of yet the simulation of the project has been completed in Python and are placed under the folder python_codes along with the steps to run it. 
