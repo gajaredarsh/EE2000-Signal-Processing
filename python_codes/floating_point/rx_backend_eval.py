@@ -9,9 +9,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import params
 import fixedpoint
-import channel
-import rx_frontend as C
-import tx_nco
+from floating_point import channel
+
+SPS = params.SAMPLES_PER_SYMBOL
+RX_IN_BITS = params.RX_IN_BITS
+RX_FULL_SCALE = params.RX_FULL_SCALE
+NOISELESS_LEVEL = SPS / 2.0                                  # |I_hat| for a clean symbol, float chain
+ACC_BITS = RX_IN_BITS + int(np.ceil(np.log2(SPS)))         # worst-case integrate-and-dump width
 
 def integrate_dump(yi, yq, timing_offset=0, sps=SPS):
     """

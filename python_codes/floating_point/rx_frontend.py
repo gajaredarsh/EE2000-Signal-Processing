@@ -10,8 +10,19 @@ from scipy.special import erfc
 import matplotlib.pyplot as plt
 
 import params
-import channel
-import tx_nco
+from floating_point import channel
+from floating_point import tx_nco
+
+SPS = params.SAMPLES_PER_SYMBOL
+FC_OVER_FS = params.FC_OVER_FS
+FIR_ORDER = params.FIR_ORDER
+FIR_FC = params.FIR_FC
+FIR_WINDOW = params.FIR_WINDOW
+COEF_BITS = params.COEF_BITS
+RX_IN_BITS = params.RX_IN_BITS
+RX_FULL_SCALE = params.RX_FULL_SCALE
+PASS_EDGE = params.PASS_EDGE
+STOP_EDGE = params.STOP_EDGE
 
 def downconvert(r, cos, sin):
     """
@@ -195,7 +206,7 @@ def _local_carrier_float(n):
 def _local_carrier_fixed(n):
     """Part A's fixed-point NCO. With phase_inc = 8192 it repeats every 8 samples, so one
     period (16 samples) tiled to length n is identical to running the NCO for n samples."""
-    import tx_nco
+    from fixed_point import tx_nco
     c, s = tx_nco.nco_fixed(SPS)
     reps = int(np.ceil(n / SPS))
     return np.tile(c, reps)[:n], np.tile(s, reps)[:n]
@@ -203,7 +214,7 @@ def _local_carrier_fixed(n):
 
 def _tx_float(bits):
     """Part A's TX in float: bits -> (I,Q) -> s, plus the LO arrays."""
-    import tx_nco
+    from floating_point import tx_nco
     I, Q = tx_nco.map_qpsk(bits)
     cos, sin = tx_nco.nco_float(len(I) * SPS, FC_OVER_FS)
     return I, Q, tx_nco.modulate(I, Q, cos, sin, SPS), cos, sin

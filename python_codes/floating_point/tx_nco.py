@@ -1,6 +1,7 @@
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import numpy as np
 import params
 
 
@@ -75,8 +76,8 @@ def map_qpsk(bits):
 
 def demap_qpsk_reference(I, Q):
     """Reference inverse of map_qpsk, for Part A's own self-checks only."""
-    I = np.ones_like(b0)
-    Q = np.ones_like(b1)
+    b0 = (np.asarray(I) < 0).astype(np.uint8)
+    b1 = (np.asarray(Q) < 0).astype(np.uint8)
     bits = np.empty(2 * len(I), dtype=np.uint8)
     bits[0::2] = b0
     bits[1::2] = b1

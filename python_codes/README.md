@@ -1,5 +1,7 @@
 # Python Implementation of the model
 
+This directory contains the implementation of fixed point and floating point implementation of the QPSK system.
+Usually on computers we get floating point literals but on real hardware we face a limitation that we can only use fixed point literals for calculation. we have here implemented both and compared the output results
 ## How to run?
 ### Requirements
 
@@ -16,11 +18,16 @@ Install the required libraries using
 pip install numpy scipy matplotlib
 ```
 
-### Usage
+### For floating point
 
 Run the simulation using:
 ```bash
-python3 main.py
+python3 main_float.py
 ```
+### For fixed point
 
+Run the simulation using:
+```bash
+python3 main_fixed.py
+```
 ## Explanations

@@ -7,13 +7,47 @@ import numpy as np
 from scipy import signal
 import params
 import fixedpoint
-import tx_nco
+from fixed_point import tx_nco
+
+SPS = params.SAMPLES_PER_SYMBOL
+FC_OVER_FS = params.FC_OVER_FS
+FIR_ORDER = params.FIR_ORDER
+FIR_FC = params.FIR_FC
+FIR_WINDOW = params.FIR_WINDOW
+COEF_BITS = params.COEF_BITS
+RX_IN_BITS = params.RX_IN_BITS
+RX_FULL_SCALE = params.RX_FULL_SCALE
+PASS_EDGE = params.PASS_EDGE
+STOP_EDGE = params.STOP_EDGE
 
 def _sat(x, bits):
     """Saturate an integer array to a signed `bits`-wide range (what a hardware saturator does)."""
     hi = (1 << (bits - 1)) - 1
     lo = -(1 << (bits - 1))
     return np.clip(x, lo, hi)
+
+
+def group_delay_samples(h):
+    """Delay of a symmetric odd-length FIR, in samples: (taps-1)/2.  Raises if not linear-phase."""
+    h = np.asarray(h)
+    if len(h) % 2 == 0 or not np.allclose(h, h[::-1]):
+        raise ValueError("filter is not a symmetric odd-length (linear-phase type I) FIR")
+    return (len(h) - 1) // 2
+
+
+def _fir(x, h, aligned):
+    """
+    y[n] = sum_k h[k] * x[n-k]   (exact for int64 arrays).
+    aligned=False : causal, zero start-up state, output delayed by D samples.
+    aligned=True  : D zeros are flushed through and the first D outputs dropped, so y[n]
+                    lines up with x[n].  Same length as x either way.
+    """
+    x = np.asarray(x)
+    if aligned:
+        d = group_delay_samples(h)
+        xp = np.concatenate([x, np.zeros(d, dtype=x.dtype)])
+        return np.convolve(xp, h)[d:d + len(x)]
+    return np.convolve(x, h)[:len(x)]
 
 
 def quantize_rx(r, bits=RX_IN_BITS, full_scale=RX_FULL_SCALE):

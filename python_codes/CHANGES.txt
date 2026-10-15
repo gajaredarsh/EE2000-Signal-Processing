@@ -1,0 +1,35 @@
+Changes relative to python_codes/ in the repo (everything else is untouched)
+============================================================================
+NEW   main_float.py, main_fixed.py   replace main.py (delete main.py)
+NEW   floating_point/__init__.py, fixed_point/__init__.py   (empty; make them regular packages)
+
+params.py
+  + v4 receiver constants: FIR_ORDER, FIR_FC, FIR_WINDOW, COEF_BITS, RX_IN_BITS,
+    RX_FULL_SCALE, PASS_EDGE, STOP_EDGE (they used to live at the top of rx_frontend.py and
+    were deleted in the split, so the modules could not import). No existing value changed.
+
+floating_point/tx_nco.py and fixed_point/tx_nco.py
+  + import numpy as np (every function crashed with NameError)
+  ~ demap_qpsk_reference(): b0 and b1 were never defined; restored b0=(I<0), b1=(Q<0)
+
+floating_point/rx_frontend.py
+  ~ "import channel / import tx_nco" -> package imports (those top-level modules no longer exist)
+  + constants block (SPS, FC_OVER_FS, FIR_*, COEF_BITS, RX_IN_BITS, RX_FULL_SCALE, *_EDGE)
+  ~ the three private test helpers (_local_carrier_fixed, _tx_float) import from the right package
+    (the leftover test helpers themselves are kept, in case your pytest files use them)
+
+fixed_point/rx_frontend.py
+  ~ "import tx_nco" -> package import
+  + same constants block
+  + group_delay_samples() and _fir(): lpf_fixed() called _fir(), which only existed in the float file
+
+floating_point/rx_backend_eval.py and fixed_point/rx_backend_eval.py
+  ~ "import channel" -> package import; removed the unused rx_frontend and tx_nco imports
+  + SPS, RX_IN_BITS, RX_FULL_SCALE, NOISELESS_LEVEL, ACC_BITS (were deleted; default arguments
+    referenced them). NOISELESS_LEVEL is 8 in the float file and 2048 in the integer file.
+
+Not changed: both channel.py, fixedpoint.py.
+Outputs: d_outputs/float_*.png, d_outputs/fixed_*.png, d_outputs/golden/ (values identical to the
+ones already in the repo).
+
+Run from python_codes/:   python main_float.py     python main_fixed.py     (--quick for a fast check)

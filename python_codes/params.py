@@ -96,3 +96,16 @@ PRBS_SEED = 0x7F
 # ---------------------------------------------------------------
 # TX mixer sign convention (LOCKED):  s[n] = I*cos[n] - Q*sin[n]
 # ---------------------------------------------------------------
+
+# ---------------------------------------------------------------
+# Receiver constants (v4). These used to be defined at the top of rx_frontend.py; they live
+# here now so floating_point/ and fixed_point/ always use the SAME numbers.
+# ---------------------------------------------------------------
+FIR_ORDER = 24                 # order = taps - 1  (24 -> 25 taps)
+FIR_FC = 0.125                 # -6 dB cutoff, cycles per sample
+FIR_WINDOW = "hamming"
+COEF_BITS = 12                 # signed FIR coefficients, format Q1.(COEF_BITS-1)
+RX_IN_BITS = 12                # receiver input word (the "ADC" word)
+RX_FULL_SCALE = 8.0            # float amplitude that maps to full scale at the receiver input
+PASS_EDGE = 1.0 / SAMPLES_PER_SYMBOL                         # data band edge (cycles/sample)
+STOP_EDGE = 2.0 * FC_OVER_FS - 1.0 / SAMPLES_PER_SYMBOL      # start of the 2*fc junk lobe
