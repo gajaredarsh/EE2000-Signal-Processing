@@ -8,7 +8,6 @@ The project models the complete digital communication chain, from bit generation
 This project was developed as part of coursework at the Indian Institute of Technology Hyderabad (IITH) to explore the design and implementation of a digital QPSK communication system.
 
 **Course:** EE2000 - Signal Processing
-**Project Type:**
 ## Features
 
 - QPSK modulation and coherent demodulation
@@ -36,3 +35,7 @@ The communication system consists of the following stages:
 As of yet the simulation of the project has been completed in Python and are placed under the folder python_codes along with the steps to run it. 
 Relevant Literature reviewed for the project has been placed under the folder Literature.
 The repository also contains Preliminary Report and Mid-Term Report required for the coursework evaluation.
+
+## Further Development Plan
+
+We have planned to design RTL and Verilog codes to run and implement this system on FPGA. We will be using UART ports to plot constellation plot using Python.

@@ -35,9 +35,11 @@ import numpy as np
 import params
 import channel
 import fixedpoint
-import tx_nco
-import rx_frontend as C
-import rx_backend_eval as D
+from floating_point import tx_nco as tx_float_nco
+from fixed_point import tx_nco as tx_fixed_nco
+from floating_point import rx_frontend as C
+from fixed_point import rx_frontend as F
+from floating_point import rx_backend_eval as D
 
 SPS = params.SAMPLES_PER_SYMBOL
 QUICK = "--quick" in sys.argv
